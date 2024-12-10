@@ -18,6 +18,25 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    # Explications des modifications
+    # Action actions/cache@v3 :
+    # Cette action est utilisée pour mettre en cache les dépendances Node.js. Elle compare le hash du fichier package-lock.json pour invalider le cache si les dépendances changent.
+
+    # Paramètres du cache :
+
+    # path: ~/.npm : Cible le dossier des dépendances Node.js.
+    # key : Génère une clé unique basée sur le système d'exploitation et le hash du fichier package-lock.json.
+    # restore-keys : Fournit des clés de secours pour essayer de restaurer un cache partiel si la clé exacte n'est pas trouvée.
+    # Bénéfices :
+
+    # Réduit les temps d'installation si le cache est valide.
+    # Recrée le cache uniquement si les dépendances changent.
+
+
+
+    # sans cache ça pris 1m 43s 
+    # avec cache ça pris 3m 12s
+    # 2eme execution avec cache
     - name: Cache Node.js modules
       uses: actions/cache@v3
       with:
