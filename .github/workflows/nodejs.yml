@@ -10,7 +10,6 @@ on:
   pull_request:
     branches: [ master ]
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,16 +22,12 @@ jobs:
     # Cette action est utilisée pour mettre en cache les dépendances Node.js. Elle compare le hash du fichier package-lock.json pour invalider le cache si les dépendances changent.
 
     # Paramètres du cache :
-
     # path: ~/.npm : Cible le dossier des dépendances Node.js.
     # key : Génère une clé unique basée sur le système d'exploitation et le hash du fichier package-lock.json.
     # restore-keys : Fournit des clés de secours pour essayer de restaurer un cache partiel si la clé exacte n'est pas trouvée.
     # Bénéfices :
-
     # Réduit les temps d'installation si le cache est valide.
     # Recrée le cache uniquement si les dépendances changent.
-
-
 
     # sans cache ça pris 1m 43s 
     # avec cache ça pris 3m 12s
@@ -60,7 +55,6 @@ jobs:
         node-version: "${{ steps.nvm.outputs.NVMRC }}"
 
     - run: npm ci
-
 
   # avec la parallelisation des tests ça pris
   test:
@@ -97,14 +91,12 @@ jobs:
     - name: Run Genaral Tests
       run: npm test
 
-
   test_nestjs:
     runs-on: ubuntu-latest
     needs: build 
-    
+
     steps:
     - uses: actions/checkout@v2
-
 
     - name: Run NestJS Tests
       run: npm run test:nestjs
@@ -115,8 +107,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    steps:
 
     - name: Run Mocha Tests
       run: npm run test:mocha
