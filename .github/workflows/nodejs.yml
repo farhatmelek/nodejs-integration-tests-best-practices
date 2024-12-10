@@ -62,7 +62,7 @@ jobs:
     - run: npm ci
 
 
-# avec la parallelisation des tests ça pris
+  # avec la parallelisation des tests ça pris
   test:
     runs-on: ubuntu-latest
     needs: build
