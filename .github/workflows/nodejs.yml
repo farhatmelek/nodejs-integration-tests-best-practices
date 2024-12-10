@@ -79,5 +79,5 @@ jobs:
 
     - name: Run Tests
       run: npm test
-      run: npm run test:nestjs
-      run: npm run test:mocha
+      npm run test:nestjs
+      npm run test:mocha
