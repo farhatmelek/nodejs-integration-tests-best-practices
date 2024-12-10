@@ -73,7 +73,7 @@ jobs:
           ${{ runner.os }}-node-
 
     - name: Set up Docker Compose
-    - uses: KengoTODA/actions-setup-docker-compose@v1
+      uses: KengoTODA/actions-setup-docker-compose@v1
       with:
         version: '2.14.2'
 
