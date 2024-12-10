@@ -77,6 +77,8 @@ jobs:
       with:
         version: '2.14.2'
 
+    - run: npm i
+
     - name: Run Genaral Tests
       run: npm test
 
@@ -87,6 +89,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+        - name: Cache Node.js modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Set up Docker Compose
+      uses: KengoTODA/actions-setup-docker-compose@v1
+      with:
+        version: '2.14.2'
+
+    - run: npm i
+
     - name: Run NestJS Tests
       run: npm run test:nestjs
 
@@ -96,6 +113,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+
+        - name: Cache Node.js modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    - name: Set up Docker Compose
+      uses: KengoTODA/actions-setup-docker-compose@v1
+      with:
+        version: '2.14.2'
+
+    - run: npm i
 
     - name: Run Mocha Tests
       run: npm run test:mocha
