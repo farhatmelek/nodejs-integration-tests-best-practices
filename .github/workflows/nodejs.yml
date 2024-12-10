@@ -101,10 +101,10 @@ jobs:
   test_nestjs:
     runs-on: ubuntu-latest
     needs: build 
+    
     steps:
     - uses: actions/checkout@v2
 
-    steps:
 
     - name: Run NestJS Tests
       run: npm run test:nestjs
