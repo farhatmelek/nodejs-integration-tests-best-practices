@@ -89,7 +89,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-        - name: Cache Node.js modules
+      - name: Cache Node.js modules
       uses: actions/cache@v3
       with:
         path: ~/.npm
@@ -115,7 +115,7 @@ jobs:
     - uses: actions/checkout@v2
 
 
-        - name: Cache Node.js modules
+      - name: Cache Node.js modules
       uses: actions/cache@v3
       with:
         path: ~/.npm
