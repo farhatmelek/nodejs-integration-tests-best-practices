@@ -72,12 +72,30 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
 
-    - name: Install Docker Compose
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker-compose
+    - name: Set up Docker Compose
+    - uses: KengoTODA/actions-setup-docker-compose@v1
+      with:
+        version: '2.14.2'
 
-    - name: Run Tests
+    - name: Run Genaral Tests
       run: npm test
-      npm run test:nestjs
-      npm run test:mocha
+
+  test_nestjs:
+    runs-on: ubuntu-latest
+    needs: build 
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run NestJS Tests
+      run: npm run test:nestjs
+
+  test_mocha:
+    runs-on: ubuntu-latest
+    needs: build 
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run Mocha Tests
+      run: npm run test:mocha
