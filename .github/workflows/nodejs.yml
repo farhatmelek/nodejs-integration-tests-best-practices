@@ -81,7 +81,7 @@ jobs:
 
   test_nestjs:
     runs-on: ubuntu-latest
-    needs: test_mocha 
+    needs: build 
 
     steps:
     - uses: actions/checkout@v2
@@ -106,7 +106,7 @@ jobs:
 
   test_mocha:
     runs-on: ubuntu-latest
-    needs: tests 
+    needs: build 
     if : ${{ github.event.pill_request.changed_files != 0 && github.event.pull_request.files.*.filename == 'recipes/mocha/basic-tests.test.js' }}
 
     steps:
