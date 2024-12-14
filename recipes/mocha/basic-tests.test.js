@@ -147,7 +147,7 @@ describe('/api', () => {
         status: 200,
         data: {
           id: addedOrderId,
-          userId: 5,
+          userId: 1,
           productId: 2,
         },
       });
